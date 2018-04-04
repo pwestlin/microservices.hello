@@ -1,1 +1,1 @@
-# microservices.hello
+A simple implementation of [Microservices](https://en.wikipedia.org/wiki/Microservices) using [Spring Boot](https://projects.spring.io/spring-boot/) 2, [Eureka](http://www.baeldung.com/spring-cloud-netflix-eureka) and [Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon).
