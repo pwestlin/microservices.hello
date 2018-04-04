@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
@@ -14,6 +15,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'docker'
 
 group = 'nu-westlin.microservices.hello'
 version = '0.0.1-SNAPSHOT'
@@ -30,6 +32,7 @@ ext {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile "javax.inject:javax.inject:1"
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 
@@ -41,5 +44,24 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+
+    if (project.hasProperty("useLatest")) {
+        tagVersion = "latest"
+    } else if (project.hasProperty("useTag")) {
+        tagVersion = project.property("useTag");
+    }
+
+    push = false
+    tag = "westlin.nu/microservices/hello/what-service"
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
     }
 }

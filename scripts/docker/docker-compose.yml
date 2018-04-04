@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  eureka:
+    image: westlin.nu/microservices/hello/eureka-naming-server:0.0.1-SNAPSHOT
+    ports:
+    - "8761:8761"
+
+  what:
+    image: westlin.nu/microservices/hello/what-service:0.0.1-SNAPSHOT
+    ports:
+    - "8000:8000"
+    environment:
+      - eureka_url=http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+
+  who:
+    image: westlin.nu/microservices/hello/who-service:0.0.1-SNAPSHOT
+    ports:
+    - "9000:9000"
+    environment:
+      - eureka_url=http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+
+  hello:
+    image: westlin.nu/microservices/hello/hello:0.0.1-SNAPSHOT
+    ports:
+    - "8080:8080"
+    environment:
+      - eureka_url=http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+

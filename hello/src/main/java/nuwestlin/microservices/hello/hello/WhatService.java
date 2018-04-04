@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient(name="${whatservice.name}")
-@RibbonClient(name="${whatservice.name}")
+//@RibbonClient(name="${whatservice.name}")
 public interface WhatService {
 
     @GetMapping("/what")

@@ -10,11 +10,11 @@ import javax.inject.Inject;
 @RestController
 @RequestMapping("/")
 public class Controller {
-
     private final WhatRepository whatRepository;
 
     @Inject
-    public Controller(WhatRepository whatRepository) {
+    public Controller(
+        WhatRepository whatRepository) {
         this.whatRepository = whatRepository;
     }
 
