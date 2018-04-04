@@ -9,8 +9,8 @@ services:
 
   what:
     image: westlin.nu/microservices/hello/what-service:0.0.1-SNAPSHOT
-    ports:
-    - "8000:8000"
+    #ports:
+    #- "8000:8000"
     environment:
       - eureka_url=http://eureka:8761/eureka/
     depends_on:
@@ -18,8 +18,8 @@ services:
 
   who:
     image: westlin.nu/microservices/hello/who-service:0.0.1-SNAPSHOT
-    ports:
-    - "9000:9000"
+    #ports:
+    #- "9000:9000"
     environment:
       - eureka_url=http://eureka:8761/eureka/
     depends_on:

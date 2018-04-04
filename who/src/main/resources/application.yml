@@ -1,6 +1,9 @@
 spring.application.name: who-service
 server.port: 9000
 
+info.app.name: who-service
+info.app.version: "${version ?:'unknown'}"
+
 management:
   endpoints.web.exposure.include: "*"
   endpoint.health.show-details: always
@@ -10,6 +13,7 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 10
+    preferIpAddress: true
   client:
     serviceUrl:
       defaultZone: ${eureka_url:http://localhost:8761/eureka/}

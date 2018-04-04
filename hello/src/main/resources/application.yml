@@ -1,9 +1,14 @@
-spring.application.name: hello-service
+spring.application.name: hello-app
+
+info.app.name: hello
+info.app.version: "${version ?:'unknown'}"
+
 
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 10
+    preferIpAddress: true
   client:
     serviceUrl:
       defaultZone: ${eureka_url:http://localhost:8761/eureka/}
