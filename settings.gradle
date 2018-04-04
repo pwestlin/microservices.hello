@@ -1,0 +1,4 @@
+include 'eureka-naming-server'
+include 'saywhat'
+include 'who'
+include 'hello'

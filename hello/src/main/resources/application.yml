@@ -1,0 +1,21 @@
+spring.application.name: hello-service
+
+#forex-service.ribbon.listOfServers: localhost:8000,localhost:8001
+
+eureka.client.service-url.default-zone: http://localhost:8761/eureka
+
+whatservice.name: 'what-service'
+whoservice.name: 'who-service'
+
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: always
+
+logging:
+  level:
+    nuwestlin.microservices.hello.hello: DEBUG
+    #org.springframework.cloud.netflix.ribbon: DEBUG
+    #com.netflix.discovery: DEBUG
+    #org.springframework.cloud.openfeign: DEBUG
+    #logging.level.com.netflix.eureka: trace
+    #logging.level.com.netflix.discovery: trace
