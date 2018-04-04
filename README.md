@@ -11,6 +11,6 @@ Start the applications (using 'gradle bootrun' from subdirectories or from your 
 Then [click here to get a random greeting to a random person](http://localhost:8080/hello).
 
 ## TODO's
-* Introduce Docker Docker
+* Use Docker
     - Docker image for each application
     - Docker Compose to start them all  
